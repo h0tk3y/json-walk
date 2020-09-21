@@ -1,0 +1,56 @@
+>print
+OK {"a":"b","c":{"d":{"e":"f"}},"v":[[123,456],[567,890]],"g":[123,{"h":{"a":123,"b":456}},{"h":{"a":456,"b":789}}]}
+>delete c/d/*
+OK
+>print
+OK {"a":"b","c":{"d":{}},"v":[[123,456],[567,890]],"g":[123,{"h":{"a":123,"b":456}},{"h":{"a":456,"b":789}}]}
+>go v
+OK
+>delete */[1]
+OK
+>print
+OK [[123],[567]]
+>delete [1]/*
+OK
+>print
+OK [[123],[]]
+>delete *
+OK
+>print
+OK []
+>up
+OK
+>print
+OK {"a":"b","c":{"d":{}},"v":[],"g":[123,{"h":{"a":123,"b":456}},{"h":{"a":456,"b":789}}]}
+>delete g/[0]
+OK
+>delete g/*/*/a
+OK
+>print
+OK {"a":"b","c":{"d":{}},"v":[],"g":[{"h":{"b":456}},{"h":{"b":789}}]}
+>delete a/*
+bad-path 1
+>delete */a
+bad-path 1
+>delete */*/*/a
+bad-path 1
+>go g
+OK
+>delete [0]
+OK
+>print
+OK [{"h":{"b":789}}]
+>delete [0]/h/b
+OK
+>print
+OK [{"h":{}}]
+>delete *
+OK
+>print
+OK []
+>up
+OK
+>up
+fail
+>print
+OK {"a":"b","c":{"d":{}},"v":[],"g":[]}

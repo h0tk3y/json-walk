@@ -1,0 +1,29 @@
+>go g
+OK
+>go [0]
+bad-path 0
+>go h
+bad-path 0
+>go [1]/h
+OK
+>up
+OK
+>up
+OK
+>go g/[1]/h
+bad-path 0
+>up
+OK
+>go g/[1]/h
+OK
+>path
+OK g/[1]/h
+>up
+OK
+>path
+OK g/[1]
+>up
+OK
+>path
+OK g
+>exit

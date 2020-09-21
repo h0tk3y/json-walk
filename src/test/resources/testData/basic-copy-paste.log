@@ -1,0 +1,60 @@
+>print
+OK {"a":"b","c":{"d":{"e":"f"}},"g":[123,{"h":[456]}]}
+>copy g/[1]/h
+OK
+>go c/d/e
+bad-path 2
+>go c/d
+OK
+>paste
+bad-path 0
+>up
+OK
+>up
+OK
+>copy a
+OK
+>go c
+OK
+>paste
+OK
+>print
+OK {"d":{"e":"f"},"a":"b"}
+>go d
+OK
+>paste
+OK
+>print
+OK {"e":"f","a":"b"}
+>up
+OK
+>up
+OK
+>print
+OK {"a":"b","c":{"d":{"e":"f","a":"b"},"a":"b"},"g":[123,{"h":[456]}]}
+>copy c/d
+OK
+>go g/[1]
+OK
+>paste
+OK
+>print
+OK {"h":[456],"c":{"d":{"e":"f","a":"b"}}}
+>copy h
+OK
+>go c/d
+OK
+>paste
+OK
+>print
+OK {"e":"f","a":"b","h":[456]}
+>up
+OK
+>up
+OK
+>up
+OK
+>up
+OK
+>print
+OK {"a":"b","c":{"d":{"e":"f","a":"b"},"a":"b"},"g":[123,{"h":[456],"c":{"d":{"e":"f","a":"b","h":[456]}}}]}

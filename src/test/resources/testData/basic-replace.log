@@ -1,0 +1,28 @@
+>print
+OK {"a":"b","c":{"d":{"e":"f"}},"g":[123,{"h":[456]}]}
+>replace a 123
+OK
+>print
+OK {"a":123,"c":{"d":{"e":"f"}},"g":[123,{"h":[456]}]}
+>replace c/d/e/f 123
+bad-path 3
+>replace c/d/e [1, 2, 3]
+OK
+>print
+OK {"a":123,"c":{"d":{"e":[1,2,3]}},"g":[123,{"h":[456]}]}
+>replace c/d/e/[1] "xyz"
+OK
+>print
+OK {"a":123,"c":{"d":{"e":[1,"xyz",3]}},"g":[123,{"h":[456]}]}
+>replace g {}
+OK
+>print
+OK {"a":123,"c":{"d":{"e":[1,"xyz",3]}},"g":{}}
+>replace a { "a": "a" }
+OK
+>print
+OK {"a":{"a":"a"},"c":{"d":{"e":[1,"xyz",3]}},"g":{}}
+>replace a/a "b"
+OK
+>print
+OK {"a":{"a":"b"},"c":{"d":{"e":[1,"xyz",3]}},"g":{}}

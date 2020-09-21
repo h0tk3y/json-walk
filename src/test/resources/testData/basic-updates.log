@@ -1,0 +1,40 @@
+>print
+OK {"a":"b","c":{"d":{"e":"f"}},"g":[123,{"h":[456]}]}
+>insert x 123
+OK
+>print
+OK {"a":"b","c":{"d":{"e":"f"}},"g":[123,{"h":[456]}],"x":123}
+>delete x
+OK
+>print
+OK {"a":"b","c":{"d":{"e":"f"}},"g":[123,{"h":[456]}]}
+>replace g [0]
+OK
+>print
+OK {"a":"b","c":{"d":{"e":"f"}},"g":[0]}
+>delete g
+OK
+>print
+OK {"a":"b","c":{"d":{"e":"f"}}}
+>insert g [0, 0, 0]
+OK
+>print
+OK {"a":"b","c":{"d":{"e":"f"}},"g":[0,0,0]}
+>delete g/[0]
+OK
+>delete g/[1]
+OK
+>delete g/[0]
+OK
+>print
+OK {"a":"b","c":{"d":{"e":"f"}},"g":[]}
+>delete a
+OK
+>delete c/d/e
+OK
+>print
+OK {"c":{"d":{}},"g":[]}
+>replace c/d []
+OK
+>print
+OK {"c":{"d":[]},"g":[]}

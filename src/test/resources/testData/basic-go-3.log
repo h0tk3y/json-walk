@@ -1,0 +1,23 @@
+>go a
+bad-path 0
+>go c/x
+bad-path 1
+>go c
+OK
+>go d/e
+bad-path 1
+>go d
+OK
+>up
+OK
+>up
+OK
+>path
+OK
+>go c/d/e
+bad-path 2
+>go c/d
+OK
+>path
+OK c/d
+>exit

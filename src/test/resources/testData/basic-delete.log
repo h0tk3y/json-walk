@@ -1,0 +1,40 @@
+>print
+OK {"a":"b","c":{"d":{"e":"f"}},"g":[123,{"h":[456]}]}
+>go g
+OK
+>go h
+bad-path 0
+>delete [0]
+OK
+>print
+OK [{"h":[456]}]
+>up
+OK
+>print
+OK {"a":"b","c":{"d":{"e":"f"}},"g":[{"h":[456]}]}
+>delete g/[0]/h
+OK
+>print
+OK {"a":"b","c":{"d":{"e":"f"}},"g":[{}]}
+>delete a
+OK
+>print
+OK {"c":{"d":{"e":"f"}},"g":[{}]}
+>delete c/d/e
+OK
+>print
+OK {"c":{"d":{}},"g":[{}]}
+>delete g/[0]
+OK
+>print
+OK {"c":{"d":{}},"g":[]}
+>delete c/d
+OK
+>print
+OK {"c":{},"g":[]}
+>delete c
+OK
+>delete g
+OK
+>print
+OK {}

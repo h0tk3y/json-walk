@@ -1,0 +1,39 @@
+>findpaths a
+OK 1
+a
+>print
+OK {"a":"b","c":{"d":{"e":"f"}},"g":[123,{"h":[456]}]}
+>findpaths h
+OK 1
+g/[1]/h
+>go g
+OK
+>findpaths [0]
+OK 2
+[0]
+[1]/h/[0]
+>findpaths h
+OK 1
+[1]/h
+>findpaths h/[0]
+OK 1
+[1]/h/[0]
+>findpaths h/[1234]
+OK 0
+>findpaths [_]
+OK 0
+>up
+OK
+>print
+OK {"a":"b","c":{"d":{"e":"f"}},"g":[123,{"h":[456]}]}
+>findpaths a/b
+OK 0
+>findpaths d/e
+OK 1
+c/d/e
+>findpaths c
+OK 1
+c
+>findpaths e
+OK 1
+c/d/e

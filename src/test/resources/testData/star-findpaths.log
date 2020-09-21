@@ -1,0 +1,70 @@
+>print
+OK {"a":"b","c":{"d":{"e":"f"}},"v":[[123,456],[567,890]],"g":[123,{"h":{"a":123,"b":456}},{"h":{"a":456,"b":789}}]}
+>findpaths *
+OK 21
+a
+c
+c/d
+c/d/e
+v
+v/[0]
+v/[0]/[0]
+v/[0]/[1]
+v/[1]
+v/[1]/[0]
+v/[1]/[1]
+g
+g/[0]
+g/[1]
+g/[1]/h
+g/[1]/h/a
+g/[1]/h/b
+g/[2]
+g/[2]/h
+g/[2]/h/a
+g/[2]/h/b
+>findpaths [0]/*
+OK 2
+v/[0]/[0]
+v/[0]/[1]
+>findpaths */h/a
+OK 2
+g/[1]/h/a
+g/[2]/h/a
+>go g
+OK
+>print
+OK [123,{"h":{"a":123,"b":456}},{"h":{"a":456,"b":789}}]
+>findpaths [0]/*
+OK 0
+>findpaths h
+OK 2
+[1]/h
+[2]/h
+>findpaths h/*
+OK 4
+[1]/h/a
+[1]/h/b
+[2]/h/a
+[2]/h/b
+>findpaths h/*/*
+OK 0
+>findpaths */b
+OK 2
+[1]/h/b
+[2]/h/b
+>up
+OK
+>findpaths c/d/*
+OK 1
+c/d/e
+>findpaths c/*
+OK 1
+c/d
+>findpaths c/*/*
+OK 1
+c/d/e
+>findpaths v/*/[0]
+OK 2
+v/[0]/[0]
+v/[1]/[0]

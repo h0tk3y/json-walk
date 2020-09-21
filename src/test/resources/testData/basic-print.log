@@ -1,0 +1,28 @@
+>print
+OK {"a":"b","c":{"d":{"e":"f"}},"g":[123,{"h":[456]}]}
+>go c
+OK
+>print
+OK {"d":{"e":"f"}}
+>go d
+OK
+>print
+OK {"e":"f"}
+>up
+OK
+>print
+OK {"d":{"e":"f"}}
+>up
+OK
+>go g
+OK
+>print
+OK [123,{"h":[456]}]
+>go [1]
+OK
+>print
+OK {"h":[456]}
+>go h
+OK
+>print
+OK [456]

@@ -1,0 +1,13 @@
+>path
+OK
+>up
+fail
+>go c
+OK
+>path
+OK c
+>up
+OK
+>up
+fail
+>exit
