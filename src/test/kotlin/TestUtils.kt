@@ -1,5 +1,4 @@
 import org.junit.Assert
-import java.io.ByteArrayInputStream
 import java.io.ByteArrayOutputStream
 import java.io.PrintStream
 
@@ -21,13 +20,22 @@ object TestUtils {
                     }
                 }
             }
+            val ignoreBadPathItem = { line: String ->
+                if (line.matches("""bad-path \d+""".toRegex())) {
+                    "bad-path"
+                } else {
+                    line
+                }
+            }
             val actual = outputStream.toByteArray().inputStream()
                 .bufferedReader()
                 .readLines()
                 .map { it.trim() }
+                .map(ignoreBadPathItem)
                 .dropLastWhile { it.isBlank() }
                 .joinToString(newline)
-            Assert.assertEquals(expected, actual)
+            val correctedExpected = expected.split(System.lineSeparator()).joinToString(separator = System.lineSeparator(), transform = ignoreBadPathItem)
+            Assert.assertEquals(correctedExpected, actual)
         } finally {
             System.setOut(oldStdOut)
             System.setIn(oldStdIn)
